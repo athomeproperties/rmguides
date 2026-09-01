@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Riviera Maya Guides — Digital Guest Guidebooks for Property Managers</title>
-<meta name="description" content="Professional, trilingual digital guest guidebooks for vacation rental properties in the Riviera Maya. Built and hosted for you.">
+<meta name="description" content="Professional, multilingual digital guest guidebooks for vacation rental properties in the Riviera Maya. Built and hosted for you.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -154,6 +154,42 @@
   .step p{font-size:13.5px; color:var(--seafoam); margin-top:4px;}
 
   /* ---------- PRICING ---------- */
+  /* ---------- FEATURED PARTNER PLAN ---------- */
+  .plan-card{
+    background:var(--sand); color:var(--ink); border-radius:20px; padding:36px;
+    max-width:820px; margin:0 auto; position:relative;
+  }
+  .plan-card.featured{
+    border:2px solid var(--brass-soft);
+    box-shadow:0 24px 48px -20px rgba(0,0,0,0.4);
+  }
+  .plan-badge{
+    display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--sand); background:var(--coral); padding:6px 14px; border-radius:100px; margin-bottom:16px;
+  }
+  .plan-head h3{font-family:var(--display); font-weight:500; font-size:26px; color:var(--ink);}
+  .plan-price{
+    font-family:var(--display); font-weight:600; font-size:36px; margin-top:8px; color:var(--ink);
+  }
+  .plan-price span{font-family:var(--mono); font-size:14px; font-weight:400; color:#8A7658;}
+  .plan-desc{font-size:14.5px; color:#5B5140; margin-top:16px; line-height:1.65; max-width:64ch;}
+  .plan-grid{display:grid; grid-template-columns:1fr; gap:24px; margin-top:26px;}
+  @media (min-width:700px){.plan-grid{grid-template-columns:1.1fr 1fr;}}
+  .plan-col-label{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--brass); margin-bottom:10px;
+  }
+  .plan-list{list-style:none;}
+  .plan-list li{font-size:13.5px; padding:9px 0; border-top:1px solid #E3D8C2; color:#5B5140;}
+  .plan-commission{
+    font-size:13.5px; color:#5B5140; background:rgba(228,103,75,0.08); border:1px solid rgba(228,103,75,0.3);
+    border-radius:10px; padding:14px; line-height:1.6;
+  }
+  .plan-commission b{color:var(--coral);}
+  .plan-divider{
+    text-align:center; margin:36px auto; font-family:var(--mono); font-size:12px; letter-spacing:0.04em;
+    color:var(--seafoam); max-width:820px; position:relative; padding-top:20px; border-top:1px solid var(--line);
+  }
+
   .pricing-grid{display:grid; grid-template-columns:1fr; gap:24px; max-width:820px; margin:0 auto;}
   @media (min-width:800px){.pricing-grid{grid-template-columns:1fr 1fr;}}
   .price-card{
@@ -236,9 +272,10 @@
   <div class="hero">
     <div class="eyebrow" data-i18n="heroEyebrow">For Vacation Rental &amp; Property Management Companies</div>
     <h1 data-i18n="heroTitle">Give every guest a<br><em>guidebook worth reading.</em></h1>
-    <p class="hero-sub" data-i18n="heroSub">Professional, trilingual digital guest guidebooks — built for your properties, hosted for you, and always up to date. No more printed binders, no more "what's the WiFi password?" messages at 11pm.</p>
+    <p class="hero-sub" data-i18n="heroSub">Professional, multilingual digital guest guidebooks — built for your properties, hosted for you, and always up to date. No more printed binders, no more "what's the WiFi password?" messages at 11pm.</p>
     <div class="hero-cta-row">
       <a class="btn-primary" href="#contact" data-i18n="heroCta1">Get Started</a>
+      <a class="btn-secondary" href="https://athomerivieramaya.com/guides/ccm410" target="_blank" rel="noopener" data-i18n="heroCta3">See a Live Example ↗</a>
       <a class="btn-secondary" href="#pricing" data-i18n="heroCta2">See Pricing</a>
     </div>
   </div>
@@ -280,7 +317,7 @@
     <div class="features">
       <div class="feature">
         <div class="f-icon">✦</div>
-        <h3 data-i18n="f1Title">Trilingual, always</h3>
+        <h3 data-i18n="f1Title">Multilingual, always</h3>
         <p data-i18n="f1Body">Every guidebook ships in English, Spanish, and French — with a one-tap language switch guests can use anytime.</p>
       </div>
       <div class="feature">
@@ -326,7 +363,7 @@
       <div class="step">
         <div>
           <h3 data-i18n="s2Title">We build &amp; translate it</h3>
-          <p data-i18n="s2Body">A fully designed, trilingual guidebook page for that specific property — usually ready within a few days.</p>
+          <p data-i18n="s2Body">A fully designed, multilingual guidebook page for that specific property — usually ready within a few days.</p>
         </div>
       </div>
       <div class="step">
@@ -347,9 +384,38 @@
   <section class="reveal" id="pricing">
     <div class="section-head">
       <div class="section-label" data-i18n="pricingLabel">Pricing</div>
-      <h2 data-i18n="pricingTitle">Simple, transparent pricing</h2>
-      <p class="section-sub" data-i18n="pricingSub">One price to build each guidebook, one flat monthly rate to host your whole portfolio — no per-property hosting fees.</p>
+      <h2 data-i18n="pricingTitle">Two ways to work with us</h2>
+      <p class="section-sub" data-i18n="pricingSub">Most property managers choose the Partner Plan — it's free. If you'd rather keep your guest experience independent, the Private Plan is also available.</p>
     </div>
+
+    <div class="plan-card featured">
+      <div class="plan-badge" data-i18n="partnerBadge">Recommended</div>
+      <div class="plan-head">
+        <h3 data-i18n="partnerTitle">Partner Plan</h3>
+        <div class="plan-price">$0 <span data-i18n="partnerPriceNote">— completely free</span></div>
+      </div>
+      <p class="plan-desc" data-i18n="partnerDesc">We build and host your guidebooks at no cost to you. In exchange, each guidebook includes a small, tasteful note at the bottom letting guests know that real estate help is available — and if one of your guests ever becomes a real estate client, you earn a share of the commission.</p>
+      <div class="plan-grid">
+        <div class="plan-col">
+          <div class="plan-col-label" data-i18n="partnerIncludedLabel">What's included</div>
+          <ul class="plan-list">
+            <li data-i18n="partnerLi1">No build fee, no hosting fee — ever</li>
+            <li data-i18n="partnerLi2">Fully designed, multilingual (EN / ES / FR) guidebooks</li>
+            <li data-i18n="partnerLi3">Custom house rules, local recommendations, WiFi QR</li>
+            <li data-i18n="partnerLi4">We host it and keep it updated for you</li>
+          </ul>
+        </div>
+        <div class="plan-col">
+          <div class="plan-col-label" data-i18n="partnerCommissionLabel">Referral commission</div>
+          <p class="plan-commission" data-i18n="partnerCommissionBody">Earn <b>10% of our commission</b> on any real estate transaction that comes from one of your guests. A completely passive income opportunity from guests you're already hosting.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-divider">
+      <span data-i18n="orLabel">or, if you'd rather keep it independent</span>
+    </div>
+
     <div class="pricing-grid">
       <div class="price-card">
         <div class="p-label" data-i18n="buildLabel">Per Guidebook</div>
@@ -357,22 +423,22 @@
         <div class="amount">$500 <span data-i18n="mxnPerGuide">MXN / guidebook</span></div>
         <ul>
           <li data-i18n="buildLi1">$300 MXN per guidebook at 10+ guidebooks</li>
-          <li data-i18n="buildLi2">Fully designed, trilingual (EN / ES / FR)</li>
+          <li data-i18n="buildLi2">Fully designed, multilingual (EN / ES / FR)</li>
           <li data-i18n="buildLi3">Custom house rules, local recommendations, WiFi QR</li>
-          <li data-i18n="buildLi4">One-time fee, paid per guidebook you order</li>
+          <li data-i18n="buildLi4b">No real estate branding — fully independent</li>
         </ul>
       </div>
       <div class="price-card highlight">
-        <div class="p-label" data-i18n="hostLabel">Whole Portfolio</div>
+        <div class="p-label" data-i18n="hostLabel">Per Property</div>
         <h3 data-i18n="hostTitle">Hosting</h3>
-        <div class="amount">$100 <span data-i18n="mxnPerMonth">MXN / month</span></div>
+        <div class="amount">$100 <span data-i18n="mxnPerMonth">MXN / property / month</span></div>
         <table class="tier-table">
           <tr><td data-i18n="tier1">1–10 properties</td><td>$100</td></tr>
           <tr><td data-i18n="tier2">11–29 properties</td><td>$80</td></tr>
           <tr><td data-i18n="tier3">30–49 properties</td><td>$60</td></tr>
           <tr><td data-i18n="tier4">50+ properties</td><td>$50</td></tr>
         </table>
-        <p style="margin-top:14px; font-size:12.5px; color:var(--seafoam);" data-i18n="hostNote">First month included free with your build order. Flat rate covers your entire portfolio — not per property.</p>
+        <p style="margin-top:14px; font-size:12.5px; color:var(--seafoam);" data-i18n="hostNote">First month included free with your build order. Rate is per property, and drops automatically as your portfolio grows.</p>
       </div>
     </div>
   </section>
@@ -407,15 +473,15 @@
       navCta: "Get Started",
       heroEyebrow: "For Vacation Rental &amp; Property Management Companies",
       heroTitle: "Give every guest a<br><em>guidebook worth reading.</em>",
-      heroSub: "Professional, trilingual digital guest guidebooks — built for your properties, hosted for you, and always up to date. No more printed binders, no more \"what's the WiFi password?\" messages at 11pm.",
-      heroCta1: "Get Started", heroCta2: "See Pricing",
+      heroSub: "Professional, multilingual digital guest guidebooks — built for your properties, hosted for you, and always up to date. No more printed binders, no more \"what's the WiFi password?\" messages at 11pm.",
+      heroCta1: "Get Started", heroCta2: "See Pricing", heroCta3: "See a Live Example ↗",
       problemLabel: "The Problem", problemTitle: "Guest questions eat your day",
       p1Title: "Printed binders get ignored", p1Body: "Guests don't read the laminated sheet on the counter — they message you instead, at all hours.",
       p2Title: "\u201cWhat's the WiFi password?\u201d", p2Body: "The single most common guest message, every single stay, for every single property.",
       p3Title: "International guests, one language", p3Body: "Your house rules and local tips are only useful if the guest can actually read them.",
       p4Title: "Outdated info nobody updates", p4Body: "The restaurant closed two years ago, but it's still on the laminated sheet.",
       featuresLabel: "What You Get", featuresTitle: "A guidebook that actually works",
-      f1Title: "Trilingual, always", f1Body: "Every guidebook ships in English, Spanish, and French — with a one-tap language switch guests can use anytime.",
+      f1Title: "Multilingual, always", f1Body: "Every guidebook ships in English, Spanish, and French — with a one-tap language switch guests can use anytime.",
       f2Title: "Scan-to-connect WiFi", f2Body: "A built-in QR code lets guests join the WiFi network automatically — no typing a password on a tiny phone keyboard.",
       f3Title: "Mobile-first design", f3Body: "Guests open it on their phone the moment they land. It's fast, clean, and built to be read on a small screen first.",
       f4Title: "Real local recommendations", f4Body: "Restaurants, groceries, and things to do — chosen for that specific property's neighborhood, with map links included.",
@@ -423,21 +489,33 @@
       f6Title: "We host it, we maintain it", f6Body: "No software to learn, no account to manage. Send us an update and we handle the rest.",
       howLabel: "How It Works", howTitle: "From property details to live guidebook",
       s1Title: "Send us your property details", s1Body: "WiFi info, door codes, house rules, anything guests need to know — however you have it, even messy notes work fine.",
-      s2Title: "We build &amp; translate it", s2Body: "A fully designed, trilingual guidebook page for that specific property — usually ready within a few days.",
+      s2Title: "We build &amp; translate it", s2Body: "A fully designed, multilingual guidebook page for that specific property — usually ready within a few days.",
       s3Title: "You get a link and a QR code", s3Body: "Send it to guests via Airbnb message, email, or print the QR code for the unit — however fits your workflow.",
       s4Title: "We host it and keep it current", s4Body: "Need to update a WiFi password or a house rule? Just message us — it's part of the service.",
-      pricingLabel: "Pricing", pricingTitle: "Simple, transparent pricing",
-      pricingSub: "One price to build each guidebook, one flat monthly rate to host your whole portfolio — no per-property hosting fees.",
+      pricingLabel: "Pricing", pricingTitle: "Two ways to work with us",
+      pricingSub: "Most property managers choose the Partner Plan — it's free. If you'd rather keep your guest experience independent, the Private Plan is also available.",
+      partnerBadge: "Recommended",
+      partnerTitle: "Partner Plan",
+      partnerPriceNote: "— completely free",
+      partnerDesc: "We build and host your guidebooks at no cost to you. In exchange, each guidebook includes a small, tasteful note at the bottom letting guests know that real estate help is available — and if one of your guests ever becomes a real estate client, you earn a share of the commission.",
+      partnerIncludedLabel: "What's included",
+      partnerLi1: "No build fee, no hosting fee — ever",
+      partnerLi2: "Fully designed, multilingual (EN / ES / FR) guidebooks",
+      partnerLi3: "Custom house rules, local recommendations, WiFi QR",
+      partnerLi4: "We host it and keep it updated for you",
+      partnerCommissionLabel: "Referral commission",
+      partnerCommissionBody: "Earn <b>10% of our commission</b> on any real estate transaction that comes from one of your guests. A completely passive income opportunity from guests you're already hosting.",
+      orLabel: "or, if you'd rather keep it independent",
       buildLabel: "Per Guidebook", buildTitle: "Build Fee",
       mxnPerGuide: "MXN / guidebook",
       buildLi1: "$300 MXN per guidebook at 10+ guidebooks",
-      buildLi2: "Fully designed, trilingual (EN / ES / FR)",
+      buildLi2: "Fully designed, multilingual (EN / ES / FR)",
       buildLi3: "Custom house rules, local recommendations, WiFi QR",
-      buildLi4: "One-time fee, paid per guidebook you order",
-      hostLabel: "Whole Portfolio", hostTitle: "Hosting",
-      mxnPerMonth: "MXN / month",
+      buildLi4b: "No real estate branding — fully independent",
+      hostLabel: "Per Property", hostTitle: "Hosting",
+      mxnPerMonth: "MXN / property / month",
       tier1: "1–10 properties", tier2: "11–29 properties", tier3: "30–49 properties", tier4: "50+ properties",
-      hostNote: "First month included free with your build order. Flat rate covers your entire portfolio — not per property.",
+      hostNote: "First month included free with your build order. Rate is per property, and drops automatically as your portfolio grows.",
       contactLabel: "Get Started", contactTitle: "Tell us about your properties",
       contactSub: "Send us a few details and we'll follow up with next steps.",
       fName: "Your name", fCompany: "Company name", fEmail: "Email address", fProperties: "How many properties?", fMessage: "Anything else we should know?",
@@ -447,15 +525,15 @@
       navCta: "Comenzar",
       heroEyebrow: "Para Empresas de Renta Vacacional y Administración de Propiedades",
       heroTitle: "Dale a cada huésped una<br><em>guía que sí van a leer.</em>",
-      heroSub: "Guías digitales profesionales y trilingües para huéspedes — creadas para tus propiedades, alojadas por nosotros, y siempre actualizadas. Se acabaron las carpetas impresas y los mensajes a las 11pm preguntando la contraseña del WiFi.",
-      heroCta1: "Comenzar", heroCta2: "Ver Precios",
+      heroSub: "Guías digitales profesionales y multilingües para huéspedes — creadas para tus propiedades, alojadas por nosotros, y siempre actualizadas. Se acabaron las carpetas impresas y los mensajes a las 11pm preguntando la contraseña del WiFi.",
+      heroCta1: "Comenzar", heroCta2: "Ver Precios", heroCta3: "Ver un Ejemplo en Vivo ↗",
       problemLabel: "El Problema", problemTitle: "Las preguntas de los huéspedes te quitan el día",
       p1Title: "Las carpetas impresas se ignoran", p1Body: "Los huéspedes no leen la hoja plastificada en la barra — en su lugar te escriben a cualquier hora.",
       p2Title: "\u201c¿Cuál es la contraseña del WiFi?\u201d", p2Body: "El mensaje más común de todos, en cada estancia, en cada propiedad.",
       p3Title: "Huéspedes internacionales, un solo idioma", p3Body: "Tu reglamento y recomendaciones locales solo sirven si el huésped realmente puede leerlos.",
       p4Title: "Información desactualizada que nadie actualiza", p4Body: "El restaurante cerró hace dos años, pero sigue en la hoja plastificada.",
       featuresLabel: "Lo Que Obtienes", featuresTitle: "Una guía que realmente funciona",
-      f1Title: "Trilingüe, siempre", f1Body: "Cada guía se entrega en inglés, español y francés — con un cambio de idioma de un toque que el huésped puede usar en cualquier momento.",
+      f1Title: "Multilingüe, siempre", f1Body: "Cada guía se entrega en inglés, español y francés — con un cambio de idioma de un toque que el huésped puede usar en cualquier momento.",
       f2Title: "WiFi con conexión por escaneo", f2Body: "Un código QR integrado permite a los huéspedes conectarse al WiFi automáticamente — sin teclear una contraseña en la pantalla pequeña del celular.",
       f3Title: "Diseño pensado para móvil", f3Body: "Los huéspedes la abren en su teléfono en cuanto llegan. Es rápida, limpia y está diseñada para leerse primero en pantalla pequeña.",
       f4Title: "Recomendaciones locales reales", f4Body: "Restaurantes, supermercados y actividades — elegidos según el vecindario específico de cada propiedad, con enlaces a mapas incluidos.",
@@ -463,21 +541,33 @@
       f6Title: "Nosotros la alojamos y la mantenemos", f6Body: "Sin software que aprender, sin cuenta que administrar. Envíanos una actualización y nosotros nos encargamos del resto.",
       howLabel: "Cómo Funciona", howTitle: "De los detalles de tu propiedad a una guía en línea",
       s1Title: "Envíanos los detalles de tu propiedad", s1Body: "Datos del WiFi, códigos de acceso, reglamento, todo lo que el huésped necesite saber — como sea que lo tengas, hasta notas desordenadas funcionan bien.",
-      s2Title: "La creamos y traducimos", s2Body: "Una página de guía completamente diseñada y trilingüe para esa propiedad específica — normalmente lista en pocos días.",
+      s2Title: "La creamos y traducimos", s2Body: "Una página de guía completamente diseñada y multilingüe para esa propiedad específica — normalmente lista en pocos días.",
       s3Title: "Recibes un enlace y un código QR", s3Body: "Envíalo a los huéspedes por mensaje de Airbnb, correo, o imprime el código QR para la unidad — como mejor se adapte a tu flujo de trabajo.",
       s4Title: "La alojamos y la mantenemos al día", s4Body: "¿Necesitas actualizar una contraseña de WiFi o una regla? Solo escríbenos — es parte del servicio.",
-      pricingLabel: "Precios", pricingTitle: "Precios simples y transparentes",
-      pricingSub: "Un precio para crear cada guía, una tarifa mensual fija para alojar todo tu portafolio — sin cargos de hospedaje por propiedad.",
+      pricingLabel: "Precios", pricingTitle: "Dos formas de trabajar con nosotros",
+      pricingSub: "La mayoría de los administradores de propiedades eligen el Plan Socio — es gratis. Si prefieres mantener tu experiencia de huésped independiente, el Plan Privado también está disponible.",
+      partnerBadge: "Recomendado",
+      partnerTitle: "Plan Socio",
+      partnerPriceNote: "— totalmente gratis",
+      partnerDesc: "Creamos y alojamos tus guías sin ningún costo para ti. A cambio, cada guía incluye una nota breve y discreta al final que informa a los huéspedes que hay ayuda inmobiliaria disponible — y si alguno de tus huéspedes se convierte en cliente de bienes raíces, tú recibes una parte de la comisión.",
+      partnerIncludedLabel: "Qué incluye",
+      partnerLi1: "Sin costo de creación, sin costo de hospedaje — nunca",
+      partnerLi2: "Guías totalmente diseñadas y multilingües (EN / ES / FR)",
+      partnerLi3: "Reglamento personalizado, recomendaciones locales, QR de WiFi",
+      partnerLi4: "Nosotros la alojamos y la mantenemos actualizada por ti",
+      partnerCommissionLabel: "Comisión por referido",
+      partnerCommissionBody: "Gana el <b>10% de nuestra comisión</b> en cualquier transacción de bienes raíces que provenga de uno de tus huéspedes. Una oportunidad de ingreso completamente pasivo a partir de huéspedes que ya estás hospedando.",
+      orLabel: "o, si prefieres mantenerlo independiente",
       buildLabel: "Por Guía", buildTitle: "Costo de Creación",
       mxnPerGuide: "MXN / guía",
       buildLi1: "$300 MXN por guía a partir de 10+ guías",
-      buildLi2: "Totalmente diseñada, trilingüe (EN / ES / FR)",
+      buildLi2: "Totalmente diseñada, multilingüe (EN / ES / FR)",
       buildLi3: "Reglamento personalizado, recomendaciones locales, QR de WiFi",
-      buildLi4: "Pago único, por cada guía que ordenes",
-      hostLabel: "Todo el Portafolio", hostTitle: "Hospedaje",
-      mxnPerMonth: "MXN / mes",
+      buildLi4b: "Sin marca inmobiliaria — totalmente independiente",
+      hostLabel: "Por Propiedad", hostTitle: "Hospedaje",
+      mxnPerMonth: "MXN / propiedad / mes",
       tier1: "1–10 propiedades", tier2: "11–29 propiedades", tier3: "30–49 propiedades", tier4: "50+ propiedades",
-      hostNote: "El primer mes está incluido gratis con tu orden de creación. La tarifa fija cubre todo tu portafolio — no es por propiedad.",
+      hostNote: "El primer mes está incluido gratis con tu orden de creación. La tarifa es por propiedad, y disminuye automáticamente conforme crece tu portafolio.",
       contactLabel: "Comenzar", contactTitle: "Cuéntanos sobre tus propiedades",
       contactSub: "Envíanos algunos datos y te contactaremos con los siguientes pasos.",
       fName: "Tu nombre", fCompany: "Nombre de la empresa", fEmail: "Correo electrónico", fProperties: "¿Cuántas propiedades?", fMessage: "¿Algo más que debamos saber?",
