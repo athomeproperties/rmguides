@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riviera Maya Guides — Property Intake Form</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#123B3E;
+    --ink-deep:#0B2A2C;
+    --sand:#FBF3E2;
+    --brass:#1B8F86;
+    --brass-soft:#5FC2B6;
+    --coral:#E4674B;
+    --seafoam:#5C7D79;
+    --line: rgba(27,143,134,0.28);
+    --display: 'Fraunces', serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 8% 12%, rgba(27,143,134,0.10), transparent 38%),
+      radial-gradient(circle at 92% 90%, rgba(95,194,182,0.10), transparent 38%),
+      var(--sand);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:720px; margin:0 auto; padding:0 28px;}
+
+  .langbar{display:flex; justify-content:flex-end; padding:20px 0 0;}
+  .lang-btn{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.06em; color:var(--seafoam);
+    background:transparent; border:1px solid var(--line); border-radius:100px; padding:5px 12px; cursor:pointer; margin-left:6px;
+  }
+  .lang-btn.active{background:var(--brass-soft); color:var(--ink); border-color:var(--brass-soft); font-weight:600;}
+
+  header{padding:24px 0 32px; text-align:center; border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--brass);}
+  h1{font-family:var(--display); font-weight:500; font-size:34px; margin-top:14px; color:var(--ink); letter-spacing:-0.01em;}
+  header p{margin-top:12px; font-size:15px; color:var(--seafoam); max-width:48ch; margin-left:auto; margin-right:auto;}
+
+  form{padding:40px 0 80px;}
+  fieldset{border:none; margin-bottom:40px;}
+  legend{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--brass); margin-bottom:18px; padding-bottom:10px; border-bottom:1px solid var(--line); width:100%;
+  }
+  .field{margin-bottom:18px;}
+  label{display:block; font-family:var(--body); font-weight:600; font-size:13.5px; color:var(--ink); margin-bottom:6px;}
+  .field .hint{font-size:12px; color:var(--seafoam); font-weight:400; margin-top:4px;}
+  input[type="text"], input[type="email"], input[type="url"], textarea, select{
+    width:100%; font-family:var(--body); font-size:15px; padding:11px 14px; border-radius:10px;
+    border:1px solid #C7DDD9; background:#FFFFFF; color:var(--ink);
+  }
+  input:focus, textarea:focus, select:focus{outline:2px solid var(--brass); outline-offset:1px;}
+  textarea{resize:vertical; min-height:80px;}
+  .row2{display:grid; grid-template-columns:1fr; gap:16px;}
+  @media (min-width:600px){.row2{grid-template-columns:1fr 1fr;}}
+
+  .url-prefix-row{display:flex; align-items:stretch; border-radius:10px; overflow:hidden; border:1px solid #C7DDD9;}
+  .url-prefix{
+    font-family:var(--mono); font-size:13px; color:var(--seafoam); background:#F1E9D8;
+    padding:11px 10px 11px 14px; white-space:nowrap; display:flex; align-items:center;
+  }
+  .url-prefix-row input{border:none; border-radius:0; flex:1; min-width:0;}
+  .url-prefix-row input:focus{outline:none;}
+
+  /* Radio toggle (house rules) */
+  .toggle-group{display:flex; gap:10px; margin-bottom:16px;}
+  .toggle-option{
+    flex:1; border:1px solid #C7DDD9; border-radius:10px; padding:14px; cursor:pointer;
+    background:#FFFFFF; transition:border-color 0.15s ease;
+  }
+  .toggle-option.active{border-color:var(--brass); background:rgba(27,143,134,0.06);}
+  .toggle-option input{display:none;}
+  .toggle-option .t-label{font-weight:600; font-size:14px; color:var(--ink);}
+  .toggle-option .t-sub{font-size:12px; color:var(--seafoam); margin-top:2px;}
+  .conditional{display:none;}
+  .conditional.visible{display:block;}
+
+  /* Color palette picker */
+  .palette-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (min-width:600px){.palette-grid{grid-template-columns:repeat(5,1fr);}}
+  .palette-option{
+    border:2px solid #C7DDD9; border-radius:14px; padding:12px; cursor:pointer; text-align:center;
+    background:#FFFFFF; transition:border-color 0.15s ease;
+  }
+  .palette-option.selected{border-color:var(--brass); box-shadow:0 0 0 3px rgba(27,143,134,0.15);}
+  .palette-option input{display:none;}
+  .swatch-row{display:flex; gap:4px; justify-content:center; margin-bottom:8px;}
+  .swatch{width:22px; height:22px; border-radius:50%; border:1px solid rgba(0,0,0,0.08);}
+  .swatch.other-swatch{
+    display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;
+    color:var(--seafoam); background:#F1E9D8;
+  }
+  .palette-name{font-size:12.5px; font-weight:600; color:var(--ink);}
+  .palette-custom{display:none; margin-top:14px;}
+  .palette-custom.visible{display:block;}
+
+  button[type="submit"]{
+    width:100%; font-family:var(--body); font-weight:700; font-size:16px; color:var(--sand);
+    background:var(--coral); border:none; padding:16px; border-radius:12px; cursor:pointer; margin-top:8px;
+  }
+  button[type="submit"]:hover{opacity:0.92;}
+  .success-msg{
+    display:none; text-align:center; padding:60px 0; font-family:var(--display); font-size:24px; color:var(--ink);
+  }
+  .success-msg.visible{display:block;}
+  .success-msg p{font-family:var(--body); font-size:15px; color:var(--seafoam); margin-top:12px;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="langbar">
+    <button class="lang-btn active" data-lang-btn="en">EN</button>
+    <button class="lang-btn" data-lang-btn="es">ES</button>
+  </div>
+
+  <header>
+    <div class="eyebrow" data-i18n="eyebrow">Riviera Maya Guides</div>
+    <h1 data-i18n="title">Property Intake Form</h1>
+    <p data-i18n="intro">Fill this out for each property and we'll build your guest guidebook. The more detail you give us, the better — even messy notes are fine.</p>
+  </header>
+
+  <form id="intake-form" action="https://formspree.io/f/maenywao" method="POST">
+
+    <fieldset>
+      <legend data-i18n="legendCompany">Your Company</legend>
+      <div class="field">
+        <label for="company" data-i18n="lblCompany">Company name</label>
+        <input type="text" id="company" name="company_name" required>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="contact_name" data-i18n="lblYourName">Your name</label>
+          <input type="text" id="contact_name" name="contact_name" required>
+        </div>
+        <div class="field">
+          <label for="contact_email" data-i18n="lblEmail">Email</label>
+          <input type="email" id="contact_email" name="contact_email" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="legendBasic">Basic Property Info</legend>
+      <div class="row2">
+        <div class="field">
+          <label for="property_name" data-i18n="lblPropertyName">Property / building name</label>
+          <input type="text" id="property_name" name="property_name" required>
+        </div>
+        <div class="field">
+          <label for="unit_number" data-i18n="lblUnit">Unit number (if applicable)</label>
+          <input type="text" id="unit_number" name="unit_number">
+        </div>
+      </div>
+      <div class="field">
+        <label for="address" data-i18n="lblAddress">Address or Google Maps link</label>
+        <input type="text" id="address" name="address">
+      </div>
+      <div class="field">
+        <label for="bedrooms" data-i18n="lblBedBath">Bedrooms / bathrooms</label>
+        <input type="text" id="bedrooms" name="bedrooms_bathrooms" data-i18n-placeholder="phBedBath" placeholder="e.g. 2 bed / 2 bath">
+      </div>
+      <div class="field">
+        <label for="airbnb_link" data-i18n="lblAirbnb">Airbnb listing link</label>
+        <input type="url" id="airbnb_link" name="airbnb_link" placeholder="https://airbnb.com/rooms/...">
+        <div class="hint" data-i18n="hintAirbnb">Optional — helps us with description and photos, not required.</div>
+      </div>
+      <div class="field">
+        <label for="url_slug" data-i18n="lblUrlSlug">What would you like your guidebook's web address to be?</label>
+        <div class="url-prefix-row">
+          <span class="url-prefix">rivieramayaguides.com/</span>
+          <input type="text" id="url_slug" name="url_slug" placeholder="casa-cooper" required>
+        </div>
+        <div class="hint" data-i18n="hintUrlSlug">Keep it short, no spaces — letters, numbers and dashes only.</div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="legendAccess">Access</legend>
+      <div class="field">
+        <label for="entry_method" data-i18n="lblEntryMethod">Entry method</label>
+        <input type="text" id="entry_method" name="entry_method" data-i18n-placeholder="phEntryMethod" placeholder="Digital code, lockbox, key handoff, etc.">
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="gate_code" data-i18n="lblGateCode">Gate code (if separate from door code)</label>
+          <input type="text" id="gate_code" name="gate_code">
+        </div>
+        <div class="field">
+          <label for="door_code" data-i18n="lblDoorCode">Door code, or how/when it's sent to guests</label>
+          <input type="text" id="door_code" name="door_code">
+        </div>
+      </div>
+      <div class="field">
+        <label for="access_quirks" data-i18n="lblAccessQuirks">Any access quirks</label>
+        <textarea id="access_quirks" name="access_quirks" data-i18n-placeholder="phAccessQuirks" placeholder="e.g. don't touch the green button, or the code resets at checkout"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="legendWifi">WiFi</legend>
+      <div class="row2">
+        <div class="field">
+          <label for="wifi_network" data-i18n="lblWifiNetwork">Network name (SSID)</label>
+          <input type="text" id="wifi_network" name="wifi_network">
+        </div>
+        <div class="field">
+          <label for="wifi_password" data-i18n="lblWifiPassword">Password</label>
+          <input type="text" id="wifi_password" name="wifi_password">
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="legendCheckinout">Check-in / Check-out</legend>
+      <div class="row2">
+        <div class="field">
+          <label for="checkin_time" data-i18n="lblCheckin">Check-in time</label>
+          <input type="text" id="checkin_time" name="checkin_time">
+        </div>
+        <div class="field">
+          <label for="checkout_time" data-i18n="lblCheckout">Check-out time</label>
+          <input type="text" id="checkout_time" name="checkout_time">
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="legendParking">Parking</legend>
+      <div class="field">
+        <label for="parking_type" data-i18n="lblParkingType">Reserved spot, common lot, street parking, or none</label>
+        <input type="text" id="parking_type" name="parking_type">
+      </div>
+      <div class="field">
+        <label for="parking_codes" data-i18n="lblParkingCodes">Any codes/gates for parking specifically</label>
+        <input type="text" id="parking_codes" name="parking_codes">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="legendRules">House Rules</legend>
+      <div class="toggle-group">
+        <label class="toggle-option active" id="toggle-upload">
+          <input type="radio" name="rules_method" value="upload" checked>
+          <div class="t-label" data-i18n="toggleDocLabel">I have a document</div>
+          <div class="t-sub" data-i18n="toggleDocSub">Upload a Word or PDF file</div>
+        </label>
+        <label class="toggle-option" id="toggle-manual">
+          <input type="radio" name="rules_method" value="manual">
+          <div class="t-label" data-i18n="toggleManualLabel">I'll answer questions</div>
+          <div class="t-sub" data-i18n="toggleManualSub">No document — fill in the fields</div>
+        </label>
+      </div>
+
+      <div class="conditional visible" id="rules-upload">
+        <div class="field">
+          <label for="rules_drive_link" data-i18n="lblDriveLink">Link to your house rules document</label>
+          <input type="url" id="rules_drive_link" name="rules_drive_link" placeholder="https://drive.google.com/...">
+          <div class="hint" data-i18n="hintDriveLink">Paste a Google Drive, Dropbox, or similar share link. Make sure sharing is set to "anyone with the link" so we can open it.</div>
+        </div>
+      </div>
+
+      <div class="conditional" id="rules-manual">
+        <div class="field">
+          <label for="quiet_hours" data-i18n="lblQuietHours">Quiet hours</label>
+          <input type="text" id="quiet_hours" name="quiet_hours">
+        </div>
+        <div class="field">
+          <label for="amenity_hours" data-i18n="lblAmenityHours">Pool/amenity hours (if applicable)</label>
+          <input type="text" id="amenity_hours" name="amenity_hours">
+        </div>
+        <div class="field">
+          <label for="general_rules" data-i18n="lblGeneralRules">Pets, smoking, trash, parking rules</label>
+          <textarea id="general_rules" name="general_rules"></textarea>
+        </div>
+        <div class="field">
+          <label for="fines_warnings" data-i18n="lblFinesWarnings">Any fines or important warnings guests should know about</label>
+          <textarea id="fines_warnings" name="fines_warnings"></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="legendQuirks">Property Quirks</legend>
+      <div class="field">
+        <label for="quirks" data-i18n="lblQuirks">Anything unusual guests need instructions for</label>
+        <textarea id="quirks" name="property_quirks" data-i18n-placeholder="phQuirks" placeholder="Hot water delay, jacuzzi trick, temperamental AC, etc."></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="legendLocal">Local Recommendations</legend>
+      <div class="field">
+        <label for="restaurants" data-i18n="lblRestaurants">A few restaurants/cafés you'd recommend nearby</label>
+        <textarea id="restaurants" name="restaurant_recs" data-i18n-placeholder="phRestaurants" placeholder="Or say 'use your judgment for the area'"></textarea>
+      </div>
+      <div class="field">
+        <label for="other_local" data-i18n="lblOtherLocal">Anything else worth mentioning</label>
+        <input type="text" id="other_local" name="other_local" data-i18n-placeholder="phOtherLocal" placeholder="Beach club, marina, golf course, etc.">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="legendPalette">Color Palette</legend>
+      <div class="palette-grid" id="palette-grid">
+        <label class="palette-option selected" data-value="Turquoise & Cream">
+          <input type="radio" name="color_palette" value="Turquoise & Cream" checked>
+          <div class="swatch-row">
+            <span class="swatch" style="background:#FBF3E2;"></span>
+            <span class="swatch" style="background:#1B8F86;"></span>
+            <span class="swatch" style="background:#123B3E;"></span>
+          </div>
+          <div class="palette-name" data-i18n="paletteTurquoise">Turquoise &amp; Cream</div>
+        </label>
+        <label class="palette-option" data-value="Ink & Brass">
+          <input type="radio" name="color_palette" value="Ink & Brass">
+          <div class="swatch-row">
+            <span class="swatch" style="background:#0F2B2E;"></span>
+            <span class="swatch" style="background:#B98B4E;"></span>
+            <span class="swatch" style="background:#F6EFE3;"></span>
+          </div>
+          <div class="palette-name" data-i18n="paletteInk">Ink &amp; Brass</div>
+        </label>
+        <label class="palette-option" data-value="Coral Sunset">
+          <input type="radio" name="color_palette" value="Coral Sunset">
+          <div class="swatch-row">
+            <span class="swatch" style="background:#FBF0E4;"></span>
+            <span class="swatch" style="background:#E4674B;"></span>
+            <span class="swatch" style="background:#7A3B2E;"></span>
+          </div>
+          <div class="palette-name" data-i18n="paletteCoral">Coral Sunset</div>
+        </label>
+        <label class="palette-option" data-value="Navy & Seafoam">
+          <input type="radio" name="color_palette" value="Navy & Seafoam">
+          <div class="swatch-row">
+            <span class="swatch" style="background:#F0F4F3;"></span>
+            <span class="swatch" style="background:#4F7C78;"></span>
+            <span class="swatch" style="background:#152B3D;"></span>
+          </div>
+          <div class="palette-name" data-i18n="paletteNavy">Navy &amp; Seafoam</div>
+        </label>
+        <label class="palette-option" data-value="Other" id="palette-other-option">
+          <input type="radio" name="color_palette" value="Other">
+          <div class="swatch-row">
+            <span class="swatch other-swatch">?</span>
+          </div>
+          <div class="palette-name" data-i18n="paletteOther">Something else</div>
+        </label>
+      </div>
+      <div class="palette-custom" id="palette-custom">
+        <div class="field">
+          <label for="palette_custom_text" data-i18n="lblPaletteCustom">Describe the colors you have in mind</label>
+          <textarea id="palette_custom_text" name="palette_custom_description" data-i18n-placeholder="phPaletteCustom" placeholder="e.g. deep green and gold, or match our logo colors"></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="legendOther">Anything Else</legend>
+      <div class="field">
+        <label for="other_notes" data-i18n="lblOtherNotes">Anything else guests commonly ask about or get confused by</label>
+        <textarea id="other_notes" name="other_notes"></textarea>
+      </div>
+    </fieldset>
+
+    <button type="submit" data-i18n="submitBtn">Submit Property Details</button>
+  </form>
+
+  <div class="success-msg" id="success-msg">
+    <span data-i18n="successTitle">Thanks!</span>
+    <p data-i18n="successBody">We've received your property details and will be in touch once your guidebook is ready.</p>
+  </div>
+</div>
+
+<script>
+  const translations = {
+    en: {
+      eyebrow: "Riviera Maya Guides",
+      title: "Property Intake Form",
+      intro: "Fill this out for each property and we'll build your guest guidebook. The more detail you give us, the better — even messy notes are fine.",
+      legendCompany: "Your Company",
+      lblCompany: "Company name", lblYourName: "Your name", lblEmail: "Email",
+      legendBasic: "Basic Property Info",
+      lblPropertyName: "Property / building name", lblUnit: "Unit number (if applicable)",
+      lblAddress: "Address or Google Maps link",
+      lblBedBath: "Bedrooms / bathrooms", phBedBath: "e.g. 2 bed / 2 bath",
+      lblAirbnb: "Airbnb listing link", hintAirbnb: "Optional — helps us with description and photos, not required.",
+      lblUrlSlug: "What would you like your guidebook's web address to be?",
+      hintUrlSlug: "Keep it short, no spaces — letters, numbers and dashes only.",
+      legendAccess: "Access",
+      lblEntryMethod: "Entry method", phEntryMethod: "Digital code, lockbox, key handoff, etc.",
+      lblGateCode: "Gate code (if separate from door code)",
+      lblDoorCode: "Door code, or how/when it's sent to guests",
+      lblAccessQuirks: "Any access quirks", phAccessQuirks: "e.g. don't touch the green button, or the code resets at checkout",
+      legendWifi: "WiFi", lblWifiNetwork: "Network name (SSID)", lblWifiPassword: "Password",
+      legendCheckinout: "Check-in / Check-out", lblCheckin: "Check-in time", lblCheckout: "Check-out time",
+      legendParking: "Parking",
+      lblParkingType: "Reserved spot, common lot, street parking, or none",
+      lblParkingCodes: "Any codes/gates for parking specifically",
+      legendRules: "House Rules",
+      toggleDocLabel: "I have a document", toggleDocSub: "Upload a Word or PDF file",
+      toggleManualLabel: "I'll answer questions", toggleManualSub: "No document — fill in the fields",
+      lblDriveLink: "Link to your house rules document",
+      hintDriveLink: "Paste a Google Drive, Dropbox, or similar share link. Make sure sharing is set to \"anyone with the link\" so we can open it.",
+      lblQuietHours: "Quiet hours", lblAmenityHours: "Pool/amenity hours (if applicable)",
+      lblGeneralRules: "Pets, smoking, trash, parking rules",
+      lblFinesWarnings: "Any fines or important warnings guests should know about",
+      legendQuirks: "Property Quirks",
+      lblQuirks: "Anything unusual guests need instructions for", phQuirks: "Hot water delay, jacuzzi trick, temperamental AC, etc.",
+      legendLocal: "Local Recommendations",
+      lblRestaurants: "A few restaurants/cafés you'd recommend nearby", phRestaurants: "Or say 'use your judgment for the area'",
+      lblOtherLocal: "Anything else worth mentioning", phOtherLocal: "Beach club, marina, golf course, etc.",
+      legendPalette: "Color Palette",
+      paletteTurquoise: "Turquoise &amp; Cream", paletteInk: "Ink &amp; Brass",
+      paletteCoral: "Coral Sunset", paletteNavy: "Navy &amp; Seafoam", paletteOther: "Something else",
+      lblPaletteCustom: "Describe the colors you have in mind", phPaletteCustom: "e.g. deep green and gold, or match our logo colors",
+      legendOther: "Anything Else",
+      lblOtherNotes: "Anything else guests commonly ask about or get confused by",
+      submitBtn: "Submit Property Details",
+      successTitle: "Thanks!",
+      successBody: "We've received your property details and will be in touch once your guidebook is ready."
+    },
+    es: {
+      eyebrow: "Riviera Maya Guides",
+      title: "Formulario de Registro de Propiedad",
+      intro: "Llena esto para cada propiedad y crearemos tu guía para huéspedes. Entre más detalle nos des, mejor — hasta notas desordenadas están bien.",
+      legendCompany: "Tu Empresa",
+      lblCompany: "Nombre de la empresa", lblYourName: "Tu nombre", lblEmail: "Correo electrónico",
+      legendBasic: "Información Básica de la Propiedad",
+      lblPropertyName: "Nombre de la propiedad / edificio", lblUnit: "Número de unidad (si aplica)",
+      lblAddress: "Dirección o enlace de Google Maps",
+      lblBedBath: "Recámaras / baños", phBedBath: "ej. 2 recámaras / 2 baños",
+      lblAirbnb: "Enlace de tu anuncio en Airbnb", hintAirbnb: "Opcional — nos ayuda con la descripción y fotos, no es obligatorio.",
+      lblUrlSlug: "¿Cómo te gustaría que fuera la dirección web de tu guía?",
+      hintUrlSlug: "Que sea corto, sin espacios — solo letras, números y guiones.",
+      legendAccess: "Acceso",
+      lblEntryMethod: "Método de entrada", phEntryMethod: "Código digital, caja de seguridad, entrega de llave, etc.",
+      lblGateCode: "Código de la reja (si es diferente al código de la puerta)",
+      lblDoorCode: "Código de la puerta, o cómo/cuándo se envía a los huéspedes",
+      lblAccessQuirks: "Alguna particularidad del acceso", phAccessQuirks: "ej. no tocar el botón verde, o el código se reinicia al hacer check-out",
+      legendWifi: "WiFi", lblWifiNetwork: "Nombre de la red (SSID)", lblWifiPassword: "Contraseña",
+      legendCheckinout: "Check-in / Check-out", lblCheckin: "Hora de check-in", lblCheckout: "Hora de check-out",
+      legendParking: "Estacionamiento",
+      lblParkingType: "Espacio reservado, estacionamiento común, en la calle, o ninguno",
+      lblParkingCodes: "Algún código/reja específico para el estacionamiento",
+      legendRules: "Reglamento",
+      toggleDocLabel: "Tengo un documento", toggleDocSub: "Compartir un archivo Word o PDF",
+      toggleManualLabel: "Responderé preguntas", toggleManualSub: "Sin documento — llenar los campos",
+      lblDriveLink: "Enlace a tu documento de reglamento",
+      hintDriveLink: "Pega un enlace de Google Drive, Dropbox o similar. Asegúrate de que el acceso esté configurado como \"cualquiera con el enlace\" para que podamos abrirlo.",
+      lblQuietHours: "Horario de silencio", lblAmenityHours: "Horario de alberca/amenidades (si aplica)",
+      lblGeneralRules: "Reglas sobre mascotas, fumar, basura, estacionamiento",
+      lblFinesWarnings: "Alguna multa o advertencia importante que los huéspedes deban saber",
+      legendQuirks: "Particularidades de la Propiedad",
+      lblQuirks: "Algo inusual que los huéspedes necesiten saber", phQuirks: "Demora en agua caliente, truco del jacuzzi, aire acondicionado difícil, etc.",
+      legendLocal: "Recomendaciones Locales",
+      lblRestaurants: "Algunos restaurantes/cafés que recomiendes cerca", phRestaurants: "O escribe 'usen su criterio para la zona'",
+      lblOtherLocal: "Algo más que valga la pena mencionar", phOtherLocal: "Club de playa, marina, campo de golf, etc.",
+      legendPalette: "Paleta de Colores",
+      paletteTurquoise: "Turquesa y Crema", paletteInk: "Tinta y Bronce",
+      paletteCoral: "Atardecer Coral", paletteNavy: "Marino y Espuma de Mar", paletteOther: "Algo diferente",
+      lblPaletteCustom: "Describe los colores que tienes en mente", phPaletteCustom: "ej. verde oscuro y dorado, o que combine con los colores de nuestro logo",
+      legendOther: "Algo Más",
+      lblOtherNotes: "Algo más que los huéspedes suelan preguntar o que les cause confusión",
+      submitBtn: "Enviar Detalles de la Propiedad",
+      successTitle: "¡Gracias!",
+      successBody: "Recibimos los detalles de tu propiedad y te contactaremos cuando tu guía esté lista."
+    }
+  };
+
+  function applyLang(lang){
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      const dict = translations[lang] || translations.en;
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-placeholder');
+      const dict = translations[lang] || translations.en;
+      if(dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn=>{
+      btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+    });
+    document.documentElement.setAttribute('lang', lang);
+  }
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLang(btn.getAttribute('data-lang-btn')));
+  });
+
+  // Toggle house rules section
+  const toggleUpload = document.getElementById('toggle-upload');
+  const toggleManual = document.getElementById('toggle-manual');
+  const rulesUpload = document.getElementById('rules-upload');
+  const rulesManual = document.getElementById('rules-manual');
+
+  function setRulesMode(mode){
+    if(mode === 'upload'){
+      toggleUpload.classList.add('active');
+      toggleManual.classList.remove('active');
+      rulesUpload.classList.add('visible');
+      rulesManual.classList.remove('visible');
+    } else {
+      toggleManual.classList.add('active');
+      toggleUpload.classList.remove('active');
+      rulesManual.classList.add('visible');
+      rulesUpload.classList.remove('visible');
+    }
+  }
+  toggleUpload.addEventListener('click', ()=> setRulesMode('upload'));
+  toggleManual.addEventListener('click', ()=> setRulesMode('manual'));
+
+  // Color palette picker
+  const paletteCustom = document.getElementById('palette-custom');
+  document.querySelectorAll('.palette-option').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      document.querySelectorAll('.palette-option').forEach(o=>o.classList.remove('selected'));
+      opt.classList.add('selected');
+      if(opt.getAttribute('data-value') === 'Other'){
+        paletteCustom.classList.add('visible');
+      } else {
+        paletteCustom.classList.remove('visible');
+      }
+    });
+  });
+
+  // Submit
+  const form = document.getElementById('intake-form');
+  const successMsg = document.getElementById('success-msg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if(response.ok){
+        form.style.display = 'none';
+        successMsg.classList.add('visible');
+      } else {
+        alert('Something went wrong — please try again.');
+      }
+    }).catch(() => {
+      alert('Something went wrong — please try again.');
+    });
+  });
+</script>
+
+</body>
+</html>
